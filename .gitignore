@@ -1,0 +1,29 @@
+#*
+*#
+#*#
+*~
+*.o
+*.out
+*.log
+*.a
+coding-style-reports.log
+.gdb_history
+
+# ---- executable ----
+mysh
+# ---- lib/my/ ----
+./lib/*/*.a
+./lib/*/*~
+./lib/*/#*
+./lib/*/*#
+./lib/*/#*#
+./lib/*/*.o
+
+# ---- include/ ----
+.include/*.log
+.include/*~
+
+# ---- / ----
+.idea
+.idea/
+test_lib
