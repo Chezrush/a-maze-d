@@ -14,6 +14,8 @@ PARSER_PATH			=	parser/
 SRC					=	$(addprefix src/,									\
 						main.c												\
 						amazed.c											\
+						$(PARSER_PATH)parsing.c                             \
+						$(PARSER_PATH)my_strchr.c                           \
 						$(UTILS_PATH)open_file.c							\
                 	    )
 SRC_TU				=	$(addprefix src/,									\
