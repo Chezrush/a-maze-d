@@ -33,7 +33,7 @@ NAME_TEST   		=	unit_tests
 
 CFLAGS  			=	-Wall -Wextra -Werror -std=gnu2x
 
-LDFLAGS				=	-L./lib/my -lmy -L./lib/lib_vectors -lvectors
+LDFLAGS				=	-L./lib/my -L./lib/lib_vectors -lvectors -lmy
 
 CPPFLAGS			=	-iquote./include/
 
