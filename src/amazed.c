@@ -10,8 +10,12 @@
 
 int amazed(int const argc, char const *const argv[])
 {
+    maze_t *maze = parse_maze();
+
     (void)argc;
     (void)argv;
-    read_file();
+    if (!maze)
+        return 84;
+    // là on met la gestion du lab les fratés
     return 0;
 }
