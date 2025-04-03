@@ -6,17 +6,22 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 char *read_file(void)
 {
     char *line = NULL;
     size_t len = 0;
-    ssize_t read = 0;
+    ssize_t read;
 
-    while ((read = getline(&line, &len, stdin)) != EOF) {
-        /*printf("Read %zd bytes, buffer is %zd bytes\n", read, len);
-        printf("%s", line);*/
+    printf("Reading input...\n");
+    read = getline(&line, &len, stdin);
+    while (read != -1) {
+        read = getline(&line, &len, stdin);
+        printf("Read %zd bytes: %s", read, line);
     }
-    printf("%s\n", line);
+    if (line)
+        printf("Final line: %s\n", line);
     return line;
 }
