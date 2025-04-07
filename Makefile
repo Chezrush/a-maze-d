@@ -16,11 +16,11 @@ SRC					=	$(addprefix src/,									\
 						amazed.c											\
 						$(PARSER_PATH)parsing.c                             \
 						$(PARSER_PATH)my_strchr.c                           \
-						$(UTILS_PATH)open_file.c							\
                 	    )
 SRC_TU				=	$(addprefix src/,									\
 						amazed.c											\
-						$(UTILS_PATH)open_file.c							\
+						$(PARSER_PATH)parsing.c                             \
+						$(PARSER_PATH)my_strchr.c                           \
                 	    )
 
 SRC_TEST			=	$(addprefix tests/,									 \

@@ -8,11 +8,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 #include "vectors.h"
 #include "my.h"
 #include "amazed.h"
 
-static void parse_line(char *line, maze_t *maze)
+static int parse_line(char *line, maze_t *maze)
 {
     if (line[0] == '#') {
         if (my_strncmp(line, "##start", 7) == 0) {
@@ -23,7 +24,7 @@ static void parse_line(char *line, maze_t *maze)
             getline(&line, &(size_t){0}, stdin);
             maze->end_room = my_strdup(line);
         }
-        return;
+        return 0;
     }
     if (my_strchr(line, '-')) {
         vector_pushback(&(maze->tunnels), &line);
@@ -32,6 +33,7 @@ static void parse_line(char *line, maze_t *maze)
     } else {
         maze->num_robots = my_atoi(line);
     }
+    return 84;
 }
 
 maze_t *parse_maze(void)

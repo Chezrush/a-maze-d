@@ -49,7 +49,6 @@ char *my_strncpy(char *dest, char const *src, int n);
 char *my_strstr(char *str, char const *to_find);
 char *my_strupcase(char *str);
 void my_swap(int *a, int *b);
-
 bool check_ismax(long int nb);
 int check_i(char const *str, int i);
 int check_isneg(char const *str, int i);

@@ -13,7 +13,7 @@ int my_atoi(char const *str)
 
     for (; str[i] == '-'; ++i)
         minus = minus * -1;
-    for (; str[i] != '\0'; ++i)
+    for (; str[i] != '\n' && str[i] != '\0'; ++i)
         res = res * 10 + str[i] - '0';
     return (res * minus);
 }
