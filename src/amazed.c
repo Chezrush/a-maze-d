@@ -12,10 +12,18 @@ int amazed(int const argc, char const *const argv[])
 {
     maze_t *maze = parse_maze();
 
-    (void)argc;
+    if (argc != 1)
+        return 84;
     (void)argv;
     if (!maze)
         return 84;
-    // là on met la gestion du lab les fratés
+    for (size_t i = 0; i < vector_getlength(maze->rooms); i++) {
+        printf("- [%ld] = %s\n", i, (char *)vector_get_at(maze->rooms, i));
+    }
+    for (size_t i = 0; i < vector_getlength(maze->tunnels); i++) {
+        printf("- [%ld] = %s\n", i, (char *)vector_get_at(maze->tunnels, i));
+    }
+    printf("start room %s", maze->start_room);
+    printf("end room %s", maze->end_room);
     return 0;
 }
