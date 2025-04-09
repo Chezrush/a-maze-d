@@ -18,11 +18,11 @@ static int put_room_info(maze_t *maze)
         printf("ACCACA\n");
     for (size_t i = 0; i < vector_getlength(maze->rooms); i++) {
         room_data = *(char **)vector_get_at(maze->rooms, i);
-        printf("DEBUG:[%ld] %s\n", i, room_data);
+        printf("DEBUG:[%ld] [%s]\n", i, room_data);
     }
     for (size_t i = 0; i < vector_getlength(maze->tunnels); i++) {
         tunnel_data = *(char **)vector_get_at(maze->tunnels, i);
-        printf("DEBUG2:[%ld] %s\n", i, tunnel_data);
+        printf("DEBUG2:[%ld] [%s]\n", i, tunnel_data);
     }
     return 0;
 }

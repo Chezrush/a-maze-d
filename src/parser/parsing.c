@@ -43,20 +43,14 @@ static char *rm_comment(char *line)
     return new_line;
 }
 
-static int check_comment(char *line, maze_t *maze)
+static char *check_comment(char *line)
 {
-    char *new_line = NULL;
+    char *new_line = line;
 
     if (my_strchr(line, '#')) {
         new_line = rm_comment(line);
-        printf("%s\n", new_line);
-        if (my_strchr(line, '-')) {
-            vector_pushback(&(maze->tunnels), &new_line);
-        } else if (my_strchr(line, ' ')) {
-            vector_pushback(&(maze->rooms), &new_line);
-        }
     }
-    return 0;
+    return new_line;
 }
 
 static int parse_line(char *line, maze_t *maze)
@@ -66,7 +60,7 @@ static int parse_line(char *line, maze_t *maze)
     if (dup[0] == '#') {
         return check_rooms(dup, maze);
     }
-    check_comment(dup, maze);
+    dup = check_comment(dup);
     if (strchr(dup, '-')) {
         vector_pushback(&(maze->tunnels), &dup);
     } else if (strchr(dup, ' '))
