@@ -34,7 +34,7 @@ int my_str_islower(char const *str);
 int my_str_isnum(char const *str);
 int my_str_isprintable(char const *str);
 int my_str_isupper(char const *str);
-char **my_str_to_word_array(char const *str, char const sep);
+char **my_str_to_word_array(char const *str, char const *sep);
 char *my_str_upper(char *str);
 char *my_strcapitalize(char *str);
 char *my_strcat(char *dest, char const *src);

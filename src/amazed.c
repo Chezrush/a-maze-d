@@ -17,13 +17,5 @@ int amazed(int const argc, char const *const argv[])
     (void)argv;
     if (!maze)
         return 84;
-    for (size_t i = 0; i < vector_getlength(maze->rooms); i++) {
-        printf("- [%ld] = %s\n", i, (char *)vector_get_at(maze->rooms, i));
-    }
-    for (size_t i = 0; i < vector_getlength(maze->tunnels); i++) {
-        printf("- [%ld] = %s\n", i, (char *)vector_get_at(maze->tunnels, i));
-    }
-    printf("start room %s", maze->start_room);
-    printf("end room %s", maze->end_room);
-    return 0;
+    return put_first_info(maze);
 }

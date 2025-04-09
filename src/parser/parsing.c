@@ -31,16 +31,49 @@ static int check_rooms(char *line, maze_t *maze)
     return 0;
 }
 
+static char *rm_comment(char *line)
+{
+    char *new_line = malloc(sizeof(char) * my_strlen(line) + 1);
+    size_t i = 0;
+
+    for (; line[i] != '\0'; i++) {
+        if (line[i] == '#') {
+            new_line[i] = '\0';
+            return new_line;
+        }
+        new_line[i] = line[i];
+    }
+    new_line[i] = '\0';
+    return new_line;
+}
+
+static int check_comment(char *line, maze_t *maze)
+{
+    char *new_line = NULL;
+
+    if (my_strchr(line, '#')) {
+        new_line = rm_comment(line);
+        printf("%s\n", new_line);
+        if (my_strchr(line, '-')) {
+            vector_pushback(&(maze->tunnels), &new_line);
+        } else if (my_strchr(line, ' ')) {
+            vector_pushback(&(maze->rooms), &new_line);
+        }
+    }
+    return 0;
+}
+
 static int parse_line(char *line, maze_t *maze)
 {
     if (line[0] == '#') {
         return check_rooms(line, maze);
     }
+    check_comment(line, maze);
     if (my_strchr(line, '-')) {
         vector_pushback(&(maze->tunnels), &line);
-    } else if (my_strchr(line, ' ')) {
+    } else if (my_strchr(line, ' '))
         vector_pushback(&(maze->rooms), &line);
-    } else {
+    else {
         maze->num_robots = my_atoi(line);
     }
     return 0;

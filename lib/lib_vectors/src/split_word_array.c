@@ -8,7 +8,7 @@
 #include "my.h"
 #include "vectors.h"
 
-vector_t *split_word_array(char const *str, char const sep)
+vector_t *split_word_array(char const *str, char const *sep)
 {
     char **tab = my_str_to_word_array(str, sep);
     vector_t *vec = vector_create(10, sizeof(char *));

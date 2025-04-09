@@ -35,6 +35,6 @@ size_t vector_find(vector_t *vector, const void *target,
     int (*compar)(const void *, const void *));
 int vector_insert_at(vector_t **vector, const void *new_elem, size_t index);
 int vector_pop_at(vector_t *vector, size_t index);
-vector_t *split_word_array(char const *str, char const sep);
+vector_t *split_word_array(char const *str, char const *sep);
 
 #endif /* VECTORS_H */

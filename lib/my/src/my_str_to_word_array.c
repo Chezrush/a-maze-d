@@ -46,7 +46,7 @@ int get_len(char const *str, char const *sep)
     return i;
 }
 
-char **str_to_word_array(char const *str, char const *sep)
+char **my_str_to_word_array(char const *str, char const *sep)
 {
     int j = 0;
     int k = 0;

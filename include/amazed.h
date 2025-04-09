@@ -23,6 +23,7 @@ typedef struct maze_s {
 int amazed(int const argc, char const *const argv[]);
 char *read_file(void);
 maze_t *parse_maze(void);
+int put_first_info(maze_t *maze);
 char *my_strchr(const char *s, int c);
 
 #endif /* AMAZED_H*/
