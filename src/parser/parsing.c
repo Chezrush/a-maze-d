@@ -13,19 +13,6 @@
 #include "my.h"
 #include "amazed.h"
 
-static int check_rooms(char *line, maze_t *maze)
-{
-    if (my_strncmp(line, "##start", 7) == 0) {
-        getline(&line, &(size_t){0}, stdin);
-        maze->start_room = my_strdup(line);
-    }
-    if (my_strncmp(line, "##end", 5) == 0) {
-        getline(&line, &(size_t){0}, stdin);
-        maze->end_room = my_strdup(line);
-        return 0;
-    }
-    return 0;
-}
 
 static char *rm_comment(char *line)
 {
@@ -41,6 +28,20 @@ static char *rm_comment(char *line)
     }
     new_line[i] = '\0';
     return new_line;
+}
+
+static int check_rooms(char *line, maze_t *maze)
+{
+    if (my_strncmp(line, "##start", 7) == 0) {
+        getline(&line, &(size_t){0}, stdin);
+        maze->start_room = my_strdup(rm_comment(line));
+    }
+    if (my_strncmp(line, "##end", 5) == 0) {
+        getline(&line, &(size_t){0}, stdin);
+        maze->end_room = my_strdup(rm_comment(line));
+        return 0;
+    }
+    return 0;
 }
 
 static char *check_comment(char *line)
@@ -66,7 +67,7 @@ static int parse_line(char *line, maze_t *maze)
     } else if (strchr(dup, ' '))
         vector_pushback(&(maze->rooms), &dup);
     else {
-        maze->num_robots = my_atoi(dup);
+        maze->num_robots = my_atoi(rm_comment(dup));
     }
     return 0;
 }
