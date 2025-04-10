@@ -11,35 +11,37 @@
 
 static int put_room_info(maze_t *maze)
 {
-    char *room_data = NULL;
-    char *tunnel_data = NULL;
+    char *data = NULL;
+    size_t len = 0;
 
-    if (maze->tunnels == NULL)
-        printf("ACCACA\n");
-    for (size_t i = 0; i < vector_getlength(maze->rooms); i++) {
-        room_data = *(char **)vector_get_at(maze->rooms, i);
-        printf("DEBUG:[%ld] [%s]\n", i, room_data);
+    if (!maze || !maze->tunnels || !maze->rooms)
+        return 84;
+    len = vector_getlength(maze->rooms);
+    for (size_t i = 0; i < len; i++) {
+        data = *(char **)vector_get_at(maze->rooms, i);
+        if (!data)
+            return 84;
+        printf("DEBUG:[%ld] [%s]\n", i, data);
     }
-    for (size_t i = 0; i < vector_getlength(maze->tunnels); i++) {
-        tunnel_data = *(char **)vector_get_at(maze->tunnels, i);
-        printf("DEBUG2:[%ld] [%s]\n", i, tunnel_data);
+    len = vector_getlength(maze->tunnels);
+    for (size_t i = 0; i < len; i++) {
+        data = *(char **)vector_get_at(maze->tunnels, i);
+        if (!data)
+            return 84;
+        printf("DEBUG2:[%ld] [%s]\n", i, data);
     }
     return 0;
 }
+
 int put_first_info(maze_t *maze)
 {
-    if (maze->num_robots < 1)
+    if (!maze || maze->num_robots < 1 || !maze->start_room || !maze->end_room)
         return 84;
     my_put_nbr(maze->num_robots);
     my_putchar('\n');
-    if (maze->start_room == NULL)
-        return 84;
     my_putstr("##start\n");
     my_putstr(maze->start_room);
-    if (maze->end_room == NULL)
-        return 84;
     my_putstr("##end\n");
     my_putstr(maze->end_room);
-    put_room_info(maze);
-    return 0;
+    return put_room_info(maze);
 }
