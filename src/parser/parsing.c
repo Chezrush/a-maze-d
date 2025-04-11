@@ -43,20 +43,42 @@ static int check_rooms(char *line, maze_t *maze)
     return 0;
 }
 
+static char *remove_newlines(char *str)
+{
+    size_t i = 0;
+    size_t j = 0;
+
+    if (!str)
+        return NULL;
+    while (str[i]) {
+        if (str[i] != '\n') {
+            str[j] = str[i];
+            j++;
+        }
+        i++;
+    }
+    str[j] = '\0';
+    return str;
+}
+
 static int parse_line(char *line, maze_t *maze)
 {
     char *dup = my_strdup(line);
 
-    if (dup[0] == '#') {
+    if (!dup)
+        return 84;
+    dup = remove_newlines(dup);
+    if (dup[0] == '#')
         return check_rooms(dup, maze);
-    }
     dup = rm_comment(dup);
+    dup = remove_newlines(dup);
     if (strchr(dup, '-')) {
         vector_pushback(&(maze->tunnels), &dup);
-    } else if (strchr(dup, ' '))
+    } else if (strchr(dup, ' ')) {
         vector_pushback(&(maze->rooms), &dup);
-    else {
+    } else {
         maze->num_robots = my_atoi(dup);
+        free(dup);
     }
     return 0;
 }

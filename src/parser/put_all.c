@@ -21,14 +21,14 @@ static int put_room_info(maze_t *maze)
         data = *(char **)vector_get_at(maze->rooms, i);
         if (!data)
             return 84;
-        my_printf("DEBUG:[%ld] [%s]\n", i, data);
+        printf("DEBUG:[%ld] [%s]\n", i, data);
     }
     len = vector_getlength(maze->tunnels);
     for (size_t i = 0; i < len; i++) {
         data = *(char **)vector_get_at(maze->tunnels, i);
         if (!data)
             return 84;
-        my_printf("DEBUG2:[%ld] [%s]\n", i, data);
+        printf("DEBUG2:[%ld] [%s]\n", i, data);
     }
     return 0;
 }

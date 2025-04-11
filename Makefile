@@ -11,18 +11,30 @@ UTILS_PATH			=	utils/
 
 PARSER_PATH			=	parser/
 
+ALGO_PATH			=	algo/
+
 SRC					=	$(addprefix src/,									\
 						main.c												\
 						amazed.c											\
 						$(PARSER_PATH)parsing.c                             \
 						$(PARSER_PATH)my_strchr.c                           \
 						$(PARSER_PATH)put_all.c								\
+						$(ALGO_PATH)astar.c 								\
+						$(ALGO_PATH)build_graph.c 							\
+						$(ALGO_PATH)display_moves.c 						\
+						$(ALGO_PATH)find_path.c 							\
+						$(ALGO_PATH)my_strndup.c 							\
                 	    )
 SRC_TU				=	$(addprefix src/,									\
 						amazed.c											\
 						$(PARSER_PATH)parsing.c                             \
 						$(PARSER_PATH)my_strchr.c                           \
 						$(PARSER_PATH)put_all.c								\
+						$(ALGO_PATH)astar.c 								\
+						$(ALGO_PATH)build_graph.c 							\
+						$(ALGO_PATH)display_moves.c 						\
+						$(ALGO_PATH)find_path.c 							\
+						$(ALGO_PATH)my_strndup.c							\
                 	    )
 
 SRC_TEST			=	$(addprefix tests/,									 \

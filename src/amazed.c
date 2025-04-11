@@ -6,16 +6,19 @@
 */
 
 #include "amazed.h"
+#include "algo.h"
 #include <stdio.h>
 
 int amazed(int const argc, char const *const argv[])
 {
-    maze_t *maze = parse_maze();
+    maze_t *maze = NULL;
 
     if (argc != 1)
         return 84;
     (void)argv;
+    maze = parse_maze();
     if (!maze)
         return 84;
-    return put_first_info(maze);
+    display_moves(maze);
+    return 0;
 }
