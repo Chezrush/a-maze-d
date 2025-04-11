@@ -12,7 +12,6 @@
     #include <string.h>
     #include <unistd.h>
     #include "my.h"
-    #include "algo.h"
     #define AUTOFREE __attribute__((cleanup(autofree_func)))
     #define FAIL_INT -1
 

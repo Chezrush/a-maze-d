@@ -10,6 +10,25 @@
     #include "vectors.h"
     #include "amazed.h"
 
+
+typedef struct node_s {
+    char *name;
+    struct node_s *parent;
+    int g;
+    int h;
+    int f;
+} node_t;
+
+typedef struct edge_s {
+    char *from;
+    char *to;
+} edge_t;
+
+typedef struct graph_s {
+    vector_t *nodes;
+    vector_t *edges;
+} graph_t;
+
 typedef struct astar_ctx_s {
     graph_t *graph;
     vector_t *queue;
@@ -31,10 +50,6 @@ typedef struct robot_state_s {
 
 
 robot_state_t init_robot_state(maze_t *maze);
-void debug_print_paths(vector_t **paths, int nb_robots);
-void init_robot_positions(robot_state_t *state);
-void update_occupied_rooms(robot_state_t *state);
-int process_robot_moves(robot_state_t *state);
 void free_robot_state(robot_state_t *state);
 void display_moves(maze_t *maze);
 
