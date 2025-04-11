@@ -26,7 +26,7 @@ SRC_TU				=	$(addprefix src/,									\
                 	    )
 
 SRC_TEST			=	$(addprefix tests/,									 \
-						test_minishell.c									 \
+						test_my_printf.c									 \
 						)
 
 NAME    			=	amazed
