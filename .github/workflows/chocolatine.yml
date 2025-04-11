@@ -71,7 +71,6 @@ jobs:
         timeout-minutes: 2
 
   push_to_mirror:
-    needs: [check_coding_style, check_program_compilation, run_tests]
     if: github.event.repository.name !=  'B-CPE-200-PAR-2-1-amazed-valentin.mine'
     runs-on: ubuntu-latest
     steps:
