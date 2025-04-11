@@ -50,7 +50,8 @@ typedef struct robot_state_s {
 
 
 robot_state_t init_robot_state(maze_t *maze);
-void free_robot_state(robot_state_t *state);
+vector_t *find_path(char *start, char *end, vector_t *tunnels);
 void display_moves(maze_t *maze);
-
+graph_t *build_graph(vector_t *tunnels);
+vector_t *astar(graph_t *g, const char *start, const char *end);
 #endif /* ALGO_H */

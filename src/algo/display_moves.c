@@ -85,15 +85,15 @@ static int process_robot_moves(robot_state_t *state)
 robot_state_t init_robot_state(maze_t *maze)
 {
     robot_state_t state = {
-        .nb_robots = maze->nb_robots,
-        .start = maze->start,
-        .end = maze->end,
-        .paths = malloc(sizeof(vector_t *) * maze->nb_robots),
+        .nb_robots = maze->num_robots,
+        .start = maze->start_room,
+        .end = maze->end_room,
+        .paths = malloc(sizeof(vector_t *) * maze->num_robots),
         .occupied = calloc(128, sizeof(int)),
         .finished = 0
     };
-    for (int i = 0; i < maze->nb_robots; ++i)
-        state.paths[i] = find_path(maze->start, maze->end, maze->tunnels);
+    for (int i = 0; i < maze->num_robots; ++i)
+        state.paths[i] = find_path(maze->start_room, maze->end_room, maze->tunnels);
     return state;
 }
 
@@ -114,9 +114,9 @@ void display_moves(maze_t *maze)
 
     (void)maze->rooms;  // j'sais pas trop à quoi elle sert
     printf("#moves\n");
-    debug_print_paths(state.paths, maze->nb_robots);
+    debug_print_paths(state.paths, maze->num_robots);
     init_robot_positions(&state);
-    while (state.finished < maze->nb_robots) {
+    while (state.finished < maze->num_robots) {
         moved = 0;
         memset(state.occupied, 0, sizeof(int) * 128);
         update_occupied_rooms(&state);
